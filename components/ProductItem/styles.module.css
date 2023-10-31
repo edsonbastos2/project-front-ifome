@@ -1,0 +1,39 @@
+.container {
+    border-radius: 0.5rem;
+    background: #FFF;
+    box-shadow: 0px 8px 40px 0px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+}
+
+.head {
+    height: 90px;
+}
+
+.info {
+    padding: 13px;
+}
+
+.info .img {
+    text-align: center;
+    margin-top: -90px;
+}
+
+.info .img img {
+    width: 80%;
+    height: auto;
+}
+
+.info .catName {
+    font-weight: 500;
+    font-size: 8px;
+    color: #1b1b1b;
+}
+.info .name {
+    font-weight: 700;
+    font-size: 18px;
+    color: #1b1b1b;
+}
+.info .price {
+    font-weight: 700;
+    font-size: 15px;
+}

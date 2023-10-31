@@ -3,6 +3,7 @@
     display: flex;
     padding: 6px;
     border-radius: 5px;
+    border: 1px solid #fff;
 }
 
 .button {
@@ -10,6 +11,9 @@
     width: 48px;
     height: 48px;
     border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .input {

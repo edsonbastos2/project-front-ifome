@@ -1,0 +1,40 @@
+.container {
+    margin: 24px;
+}
+
+
+.swiper {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+}
+  
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+  
+    /* Center slide text vertically */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.swiperDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 150px;
+    background-color: red;
+    color: #fff;
+    font-weight: 700;
+}
+  
