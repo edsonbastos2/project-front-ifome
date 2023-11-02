@@ -5,7 +5,7 @@ import { CountContext } from '../../contexts/Countcontext'
 
 
 type Props = {
-    maincolor: string
+    maincolor: string 
     onSearch: (searchValue: string) => void
 }
 
