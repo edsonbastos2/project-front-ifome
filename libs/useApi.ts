@@ -9,7 +9,7 @@ export const useApi = () => ({
                 return {
                     slug: 'burgerx',
                     name: 'burgerx',
-                    mainColor: '#ff0000',
+                    mainColor: '#E5383B',
                     secondColor: '#00ff00'
                 }
             case 'pizzax':

@@ -1,0 +1,57 @@
+.container {
+    background-color: #fff;
+    padding: 50px 24px;
+}
+
+.header {
+    font-size: 36px;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    font-weight: bold;
+    text-align: center;
+}
+.subtitle {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 21px;
+    color: #1b1b1b;
+    width: 223px;
+    text-align: center;
+    margin: auto;
+    border-bottom: 1.5px solid #000000;
+    padding-bottom: 40px;
+    position: relative;
+}
+
+.line {
+    border-top: 1.5px solid #e2e2e2;
+    margin-top: -1.5px;
+}
+
+.formArea {
+    margin-top: 56px;
+}
+.inputArea {
+    margin-bottom: 32px;
+}
+.forgetArea {
+    font-weight: 400;
+    font-size: 16px;
+    text-align: center;
+    margin: auto;
+    color: #000;
+    width: fit-content;
+    border-bottom: 1.5px solid #000;
+    position: relative;
+    padding-bottom: 62px;
+}
+
+.forgetArea a {
+    font-weight: 600;
+    text-decoration: none;
+    color: #000;
+}
+
+.signupArea {
+    margin-top: 62px;
+}

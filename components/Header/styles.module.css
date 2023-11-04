@@ -1,0 +1,31 @@
+.container {
+    display: flex;
+    height: 48px;
+}
+
+.leftSide, .rightSide {
+    width: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.centerSide {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.title {
+    color: #1b1b1b;
+    font-weight: 600;
+    font-size: 24px;
+}
+
+.subtitle {
+    font-weight: 400;
+    font-size: 13px;
+    color: #6a7d8b;
+}
