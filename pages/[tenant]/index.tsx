@@ -7,11 +7,13 @@ import { useApi } from '../../libs/useApi';
 import { CountProvider } from '../../contexts/Countcontext';
 import { Tenant } from '../../model/Tenant';
 import { useAppContext } from '../../contexts/AppContext';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { Product } from '../../model/Product';
 
 
 const Home= (data:Props) => {
   const {tenant, setTenant} = useAppContext()
+  const [products, setProducts] = useState<Product[]>(data.products)
 
   useEffect(() => {
     setTenant(data.tenant)
@@ -51,31 +53,12 @@ const Home= (data:Props) => {
         <Banner/>
 
         <div className={styles.grid}>
-          <ProductItem
-            data={{name:'Burgão Louco', category:'Burguer', img:'temp/burger.png', price:'R$ 25,90'}}
-            maincolor={data.tenant.mainColor}
-            secondaryColor={data.tenant.secondColor}
-          />
-          <ProductItem
-            data={{name:'Burgão Louco', category:'Burguer', img:'temp/burger.png', price:'R$ 25,90'}}
-            maincolor={data.tenant.mainColor}
-            secondaryColor={data.tenant.secondColor}
-          />
-          <ProductItem
-            data={{name:'Burgão Louco', category:'Burguer', img:'temp/burger.png', price:'R$ 25,90'}}
-            maincolor={data.tenant.mainColor}
-            secondaryColor={data.tenant.secondColor}
-          />
-          <ProductItem
-            data={{name:'Burgão Louco', category:'Burguer', img:'temp/burger.png', price:'R$ 25,90'}}
-            maincolor={data.tenant.mainColor}
-            secondaryColor={data.tenant.secondColor}
-          />
-          <ProductItem
-            data={{name:'Burgão Louco', category:'Burguer', img:'temp/burger.png', price:'R$ 25,90'}}
-            maincolor={data.tenant.mainColor}
-            secondaryColor={data.tenant.secondColor}
-          />
+          { products.map((item, index) => (
+            <ProductItem
+              key={index}
+              data={item}
+            />
+          ))}
         </div>
     </div>
     </CountProvider>
@@ -86,6 +69,7 @@ export default Home;
 
 type Props = {
   tenant: Tenant
+  products: Product[]
 }
 
 
@@ -93,8 +77,9 @@ type Props = {
 export const getServerSideProps:GetServerSideProps = (async (context) => {
   const { tenant: tenantSlug } = context.query
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  const api = useApi()
-  const tenant = await api.getTenant(tenantSlug as string)
+  const api = useApi(tenantSlug as string)
+  const tenant = await api.getTenant()
+  const products = await api.getAllProducts()
 
   if(!tenant) {
     return {
@@ -105,6 +90,5 @@ export const getServerSideProps:GetServerSideProps = (async (context) => {
     }
   }
 
-  console.log('data: ', tenantSlug)
-  return { props: { tenant } }
+  return { props: { tenant, products } }
 })

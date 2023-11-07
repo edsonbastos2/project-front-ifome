@@ -1,8 +1,18 @@
+import { Product } from "../model/Product"
 import { Tenant } from "../model/Tenant"
 
-export const useApi = () => ({
+const TEMPORARYondeProduct = {
+    id:'1',
+    name:'Burgão',
+    img: 'temp/burger.png',
+    price: 25.50,
+    category: 'burguer',
+    decription:'Burguer estilo texano, com bastante molho BBQ'
+} as Product
 
-    getTenant: (tenantslug: string): boolean | Tenant => {
+export const useApi = (tenantslug: string) => ({
+
+    getTenant: async() => {
 
         switch(tenantslug) {
             case 'burgerx':
@@ -23,5 +33,17 @@ export const useApi = () => ({
 
         }
         
+    },
+
+    getAllProducts: async() => {
+        let products = []
+        for(let p = 0; p<10;p++){
+            products.push(TEMPORARYondeProduct)
+        }
+        return products
+    },
+    getProduct: async(id: string) => {
+
+        return TEMPORARYondeProduct
     }
 })

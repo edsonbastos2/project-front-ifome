@@ -8,7 +8,7 @@ import Head from 'next/head';
 import { Header } from '../../components/Header';
 import { Button } from '../../components/Button';
 import { useRouter } from 'next/router';
-import MsgIcon from './msg.svg'
+import { Icon } from '../../components/Icon';
 
 
 const ForgetSuccess = (data:Props) => {
@@ -37,7 +37,7 @@ const ForgetSuccess = (data:Props) => {
         />
 
         <div className={styles.msgIcon}>
-            <MsgIcon color={data.tenant.mainColor}/>
+            <Icon color={data.tenant.mainColor} icon='envelope' width={99} height={81}/>
         </div>
 
         <div className={styles.title}>Verifique seu e-mail</div>
@@ -72,8 +72,8 @@ type Props = {
 export const getServerSideProps:GetServerSideProps = (async (context) => {
   const { tenant: tenantSlug } = context.query
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  const api = useApi()
-  const tenant = await api.getTenant(tenantSlug as string)
+  const api = useApi(tenantSlug as string)
+  const tenant = await api.getTenant()
 
   if(!tenant) {
     return {
