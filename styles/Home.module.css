@@ -2,6 +2,10 @@
   background-color: #fff;
 }
 
+.container a {
+  text-decoration: none;
+}
+
 .header {
   background-color: #f9f9fb;
   padding: 50px 24px 30px 24px;

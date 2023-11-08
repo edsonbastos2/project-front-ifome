@@ -9,6 +9,7 @@ import { Tenant } from '../../model/Tenant';
 import { useAppContext } from '../../contexts/AppContext';
 import { useEffect, useState } from 'react';
 import { Product } from '../../model/Product';
+import Link from 'next/link';
 
 
 const Home= (data:Props) => {
@@ -52,14 +53,16 @@ const Home= (data:Props) => {
 
         <Banner/>
 
-        <div className={styles.grid}>
-          { products.map((item, index) => (
-            <ProductItem
-              key={index}
-              data={item}
-            />
-          ))}
-        </div>
+          <Link href={`/${data.tenant.slug}/produto/1`}>
+            <div className={styles.grid}>
+              { products.map((item, index) => (
+                  <ProductItem
+                    key={index}
+                    data={item}
+                  />
+                  ))}
+            </div>
+          </Link>
     </div>
     </CountProvider>
   );

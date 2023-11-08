@@ -4,7 +4,7 @@ import { Tenant } from "../model/Tenant"
 const TEMPORARYondeProduct = {
     id:'1',
     name:'Burgão',
-    img: 'temp/burger.png',
+    img: '/temp/burger.png',
     price: 25.50,
     category: 'burguer',
     decription:'Burguer estilo texano, com bastante molho BBQ'

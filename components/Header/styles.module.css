@@ -18,6 +18,20 @@
     flex-direction: column;
 }
 
+.leftSide  span, .rightSide span {
+    display: block;
+    width: 48px;
+    height: 48px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttonTransparent {
+    background-color: rgba(0, 0, 0, .1);
+}
+
 .title {
     color: #1b1b1b;
     font-weight: 600;
