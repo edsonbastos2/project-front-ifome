@@ -7,7 +7,7 @@ const TEMPORARYondeProduct = {
     img: '/temp/burger.png',
     price: 25.50,
     category: 'burguer',
-    decription:'Burguer estilo texano, com bastante molho BBQ'
+    decription:'Burguer estilo texano, 2 blends de carne de 150g, queijo chedar, bacon com bastante molho BBQ'
 } as Product
 
 export const useApi = (tenantslug: string) => ({
