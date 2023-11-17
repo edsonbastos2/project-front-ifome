@@ -5,5 +5,13 @@ export const useFormatter = () => ({
             style: 'currency',
             currency: 'BRL'
         })
+    },
+
+    formatQuantity: (quantity: number, digite: number) => {
+        if(quantity.toString().length >= digite) return quantity
+
+        const remain = digite - quantity.toString().length
+
+        return `${'0'.repeat(remain)}${quantity}`
     }
 })
