@@ -1,10 +1,10 @@
 import { GetServerSideProps } from 'next';
 import styles from '../../../styles/product-id.module.css'
 import { useApi } from '../../../libs/useApi';
-import { Tenant } from '../../../model/Tenant';
-import { useAppContext } from '../../../contexts/AppContext';
+import { Tenant } from '../../../types/Tenant';
+import { useAppContext } from '../../../contexts/app';
 import { useEffect, useState } from 'react';
-import { Product } from '../../../model/Product';
+import { Product } from '../../../types/Product';
 import Head from 'next/head';
 import { Header } from '../../../components/Header';
 import { Button } from '../../../components/Button';

@@ -1,5 +1,5 @@
-import { Product } from "../model/Product"
-import { Tenant } from "../model/Tenant"
+import { Product } from "../types/Product"
+import { Tenant } from "../types/Tenant"
 
 const TEMPORARYondeProduct = {
     id:'1',

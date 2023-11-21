@@ -1,8 +1,8 @@
 import { GetServerSideProps } from 'next';
 import styles from '../../styles/Forget.module.css'
 import { useApi } from '../../libs/useApi';
-import { Tenant } from '../../model/Tenant';
-import { useAppContext } from '../../contexts/AppContext';
+import { Tenant } from '../../types/Tenant';
+import { useAppContext } from '../../contexts/app';
 import { useEffect, useState } from 'react';
 import Head from 'next/head';
 import { Header } from '../../components/Header';
@@ -81,8 +81,8 @@ type Props = {
 export const getServerSideProps:GetServerSideProps = (async (context) => {
   const { tenant: tenantSlug } = context.query
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  const api = useApi()
-  const tenant = await api.getTenant(tenantSlug as string)
+  const api = useApi(tenantSlug as string)
+  const tenant = await api.getTenant()
 
   if(!tenant) {
     return {

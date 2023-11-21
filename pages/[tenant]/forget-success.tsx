@@ -1,8 +1,8 @@
 import { GetServerSideProps } from 'next';
 import styles from '../../styles/ForgetSuccess.module.css'
 import { useApi } from '../../libs/useApi';
-import { Tenant } from '../../model/Tenant';
-import { useAppContext } from '../../contexts/AppContext';
+import { Tenant } from '../../types/Tenant';
+import { useAppContext } from '../../contexts/app';
 import { useEffect } from 'react';
 import Head from 'next/head';
 import { Header } from '../../components/Header';

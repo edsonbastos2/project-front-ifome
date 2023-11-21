@@ -4,11 +4,10 @@ import { ProductItem } from '../../components/ProductItem';
 import { SearchInput } from '../../components/SearchInput';
 import styles from '../../styles/Home.module.css'
 import { useApi } from '../../libs/useApi';
-import { CountProvider } from '../../contexts/Countcontext';
-import { Tenant } from '../../model/Tenant';
-import { useAppContext } from '../../contexts/AppContext';
+import { Tenant } from '../../types/Tenant';
+import { useAppContext } from '../../contexts/app';
 import { useEffect, useState } from 'react';
-import { Product } from '../../model/Product';
+import { Product } from '../../types/Product';
 import Link from 'next/link';
 
 
@@ -26,7 +25,6 @@ const Home= (data:Props) => {
 
 
   return (
-    <CountProvider>
     <div className={styles.container}>
         <header className={styles.header}>
           <div className={styles.headerTop}>
@@ -64,7 +62,6 @@ const Home= (data:Props) => {
             </div>
           </Link>
     </div>
-    </CountProvider>
   );
 }
 
