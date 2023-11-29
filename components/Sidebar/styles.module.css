@@ -3,9 +3,11 @@
     top: 0;
     bottom: 0;
     right: 0;
-    width: 100vw;
+    width: 0;
     background-color: #fff;
     z-index: 9999;
+    transition: all ease .2s;
+    overflow-x: hidden;
 }
 
 .area {
@@ -18,14 +20,56 @@
 .header {
     display: flex;
     justify-content: space-between;
+    margin: 78px 24px 0 24px;
+    position: relative;
 }
 
 .loginArea {
     border-bottom: 1.5px solid #000;
+    margin-left: 42px;
+    padding-bottom: 48px;
+    min-width: 230px;
 }
-.closeBtn {}
+
+.userInfor {
+ font-weight: 400;
+ font-size: 16px;
+ color: #96a3ab;
+}
+
+.userInfor strong {
+    font-weight: 500;
+    font-size: 24px;
+    color: #1b1b1b;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.closeBtn {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    font-size: 22px;
+    font-weight: 600;
+}
 
 .line {
+    margin: 0 24px;
     border-bottom: 1.5px solid #e2e2e2;
-    margin-top: -1.5;
+    margin-top: -1.5px;
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 25px 66px;
+}
+
+.menuButton{
+    flex-direction: column;
+    padding: 25px 66px;
+
 }

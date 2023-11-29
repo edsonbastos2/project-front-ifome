@@ -10,10 +10,12 @@ import { InputField } from '../../components/InputField';
 import { Button } from '../../components/Button';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { useAuthContext } from '../../contexts/auth';
 
 
 const Login = (data:Props) => {
   const {tenant, setTenant} = useAppContext()
+  const { setToken, setUser} = useAuthContext()
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -24,7 +26,16 @@ const Login = (data:Props) => {
     setTenant(data.tenant)
   },[])
 
-  const handleSubmit = () => {}
+  const handleSubmit = () => {
+    setUser({
+      name:'Edson Bastos',
+      email:'edsonbastos@gmail.com'
+    })
+
+    setToken('12345656')
+
+    router.push(`/${data.tenant.slug}`)
+  }
   const handleSignUp = () => {
     router.push(`/${data.tenant.slug}/signup`)
   }

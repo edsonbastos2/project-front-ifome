@@ -15,6 +15,7 @@ import { Sidebar } from '../../components/Sidebar';
 const Home= (data:Props) => {
   const {tenant, setTenant} = useAppContext()
   const [products, setProducts] = useState<Product[]>(data.products)
+  const [openSidebar, setSidebar] = useState(false)
 
   useEffect(() => {
     setTenant(data.tenant)
@@ -38,13 +39,17 @@ const Home= (data:Props) => {
               </div>
             </div>
             <div className={styles.hraderTopRight}>
-              <div className={styles.headerMenurBotton}>
+              <div className={styles.headerMenurBotton} onClick={() => setSidebar(true)}>
                 <div className={styles.menuButtonLine} style={{backgroundColor: tenant?.mainColor}}></div>
                 <div className={styles.menuButtonLine} style={{backgroundColor: tenant?.mainColor}}></div>
                 <div className={styles.menuButtonLine} style={{backgroundColor: tenant?.mainColor}}></div>
               </div>
 
-              <Sidebar/>
+              <Sidebar
+                tenant={data.tenant}
+                openSidebar={openSidebar}
+                onClose={() => setSidebar(false)}
+              />
             </div>
           </div>
           <div className={styles.headerBottom}>
