@@ -1,5 +1,6 @@
 import { Product } from "../types/Product"
 import { Tenant } from "../types/Tenant"
+import { User } from "../types/User"
 
 const TEMPORARYondeProduct = {
     id:'1',
@@ -18,16 +19,16 @@ export const useApi = (tenantslug: string) => ({
             case 'burgerx':
                 return {
                     slug: 'burgerx',
-                    name: 'burgerx',
+                    name: 'HambugueriaX',
                     mainColor: '#E5383B',
-                    secondColor: '#00ff00'
+                    secondColor: '#FFF9F2'
                 }
             case 'pizzax':
                 return {
                     slug: 'pizzax',
-                    name: 'pizzax',
-                    mainColor: '#00ff00',
-                    secondColor: '#0000ff'
+                    name: 'PizzariaX',
+                    mainColor: '#6AB70A',
+                    secondColor: '#E0E0E0'
                 }
             default: return false
 
@@ -45,5 +46,14 @@ export const useApi = (tenantslug: string) => ({
     getProduct: async(id: string) => {
 
         return TEMPORARYondeProduct
+    },
+
+    authorization: async (token:string):Promise<User|false> => {
+        if(!token) return false
+
+        return {
+            name:'Edson Bastos',
+            email:'edsonbastos@gmail.com'
+        }
     }
 })

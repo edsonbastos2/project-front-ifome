@@ -24,9 +24,9 @@ export const SearchInput = ({ onSearch }:Props) => {
     }
 
     const handleKeyUp = (event: KeyboardEvent<HTMLInputElement>) => {
-        if(event.code === 'Enter') {
-            onSearch(searchValue)
-        }
+        onSearch(searchValue)
+        // if(event.code === 'Enter') {
+        // }
     }
 
 

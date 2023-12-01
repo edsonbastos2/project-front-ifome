@@ -56,3 +56,30 @@
   gap: 24px;
   margin: 0px 24px 0px 24px;
 }
+
+.searchText {
+  font-size: 16px;
+  font-weight: 400;
+  color: #979797;
+  margin: 27px 0 80px 24px;
+}
+
+.searchText strong {
+  font-weight: 600;
+  line-height: 33px;
+}
+
+.noProducts {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
+
+.noProducts .noItem {
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 29px;
+  color: #cdcdcd;
+  text-align: center;
+}
