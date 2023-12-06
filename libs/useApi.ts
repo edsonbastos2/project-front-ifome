@@ -3,7 +3,7 @@ import { Tenant } from "../types/Tenant"
 import { User } from "../types/User"
 
 const TEMPORARYondeProduct = {
-    id:'1',
+    id:1,
     name:'Burgão',
     img: '/temp/burger.png',
     price: 25.50,
@@ -39,13 +39,16 @@ export const useApi = (tenantslug: string) => ({
     getAllProducts: async() => {
         let products = []
         for(let p = 0; p<10;p++){
-            products.push(TEMPORARYondeProduct)
+            products.push({
+                ...TEMPORARYondeProduct,
+                id: p + 1
+            })
         }
         return products
     },
-    getProduct: async(id: string) => {
+    getProduct: async(id: number) => {
 
-        return TEMPORARYondeProduct
+        return {...TEMPORARYondeProduct, id}
     },
 
     authorization: async (token:string):Promise<User|false> => {

@@ -10,6 +10,9 @@ import { Header } from '../../../components/Header';
 import { Button } from '../../../components/Button';
 import { useFormatter } from '../../../libs/useFormatter';
 import { Quantity } from '../../../components/Quantity';
+import { CartCookie } from '../../../types/CartCookie';
+import { getCookie, hasCookie, setCookie } from 'cookies-next';
+import { useRouter } from 'next/router';
 
 
 const Product= (data:Props) => {
@@ -22,8 +25,37 @@ const Product= (data:Props) => {
   },[])
 
   const formatter = useFormatter()
+  const router = useRouter()
 
-  const handleClickCart = () => {}
+  const handleAddToCart = () => {
+    let cart = [] as CartCookie[]
+
+    if(hasCookie('cart')) {
+      const cartCookie = getCookie('cart')
+
+      const cartJson:CartCookie[] = JSON.parse(cartCookie as string)
+
+      for(let i in cartJson) {
+        if(cartJson[i].qtd && cartJson[i].id) {
+          cart.push(cartJson[i])
+        }
+      }
+    }
+
+    const cartIndex = cart.findIndex(item => item.id === data.product.id)
+    if(cartIndex > -1) {
+      cart[cartIndex].qtd += +quantity
+    } else {
+      cart.push({id: data.product.id, qtd: quantity})
+    }
+
+    console.log('cart: ', cart)
+
+    setCookie('cart', JSON.stringify(cart))
+
+    // router.push(`/${data.tenant.slug}/cart`)
+
+  }
 
   const handleQauntity = (payload: number) => {
     setQuantity(payload)
@@ -78,7 +110,7 @@ const Product= (data:Props) => {
             <Button
               color={data.tenant.mainColor}
               label='Adicionar a sacola'
-              onClick={handleClickCart}
+              onClick={handleAddToCart}
               fill
             />
         </div>
@@ -100,7 +132,7 @@ export const getServerSideProps:GetServerSideProps = (async (context) => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const api = useApi(tenantSlug as string)
   const tenant = await api.getTenant()
-  const product = await api.getProduct(id as string)
+  const product = await api.getProduct(parseInt(id as string))
 
   if(!tenant) {
     return {

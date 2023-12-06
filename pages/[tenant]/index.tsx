@@ -25,9 +25,7 @@ const Home= (data:Props) => {
   useEffect(() => {
     setTenant(data.tenant)
     setToken(data.token)
-    if(data.user) {
-      setUser(data.user)
-    }
+    if(data.user) setUser(data.user)
   },[])
 
   const [filteredProducts, setFilteredProducts] = useState<Product[]>([])
@@ -91,16 +89,15 @@ const Home= (data:Props) => {
               
                 filteredProducts.length > 0 &&
 
-                  <Link href={`/${data.tenant.slug}/produto/1`}>
                   <div className={styles.grid}>
                     { filteredProducts.map((item, index) => (
+                      <Link key={index} href={`/${data.tenant.slug}/produto/${item.id}`}>
                         <ProductItem
-                          key={index}
                           data={item}
                         />
-                        ))}
+                      </Link>
+                    ))}
                   </div>
-                  </Link>
               
               }
 
@@ -117,16 +114,15 @@ const Home= (data:Props) => {
         { !searchText &&
         <>
           <Banner/>
-            <Link href={`/${data.tenant.slug}/produto/1`}>
-              <div className={styles.grid}>
-                { products.map((item, index) => (
-                    <ProductItem
-                      key={index}
-                      data={item}
-                    />
-                    ))}
-              </div>
-            </Link>
+          <div className={styles.grid}>
+            { filteredProducts.map((item, index) => (
+              <Link key={index} href={`/${data.tenant.slug}/produto/${item.id}`}>
+                <ProductItem
+                  data={item}
+                />
+              </Link>
+            ))}
+          </div>
         </>
         }
     </div>
@@ -148,7 +144,9 @@ export const getServerSideProps:GetServerSideProps = (async (context) => {
   const { tenant: tenantSlug } = context.query
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const api = useApi(tenantSlug as string)
+
   const tenant = await api.getTenant()
+
   const products = await api.getAllProducts()
 
   const token  = getCookie('_access_token', context)
