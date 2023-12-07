@@ -28,7 +28,7 @@ const Product= (data:Props) => {
   const router = useRouter()
 
   const handleAddToCart = () => {
-    let cart = [] as CartCookie[]
+    let cart:CartCookie[] = []
 
     if(hasCookie('cart')) {
       const cartCookie = getCookie('cart')
@@ -44,7 +44,7 @@ const Product= (data:Props) => {
 
     const cartIndex = cart.findIndex(item => item.id === data.product.id)
     if(cartIndex > -1) {
-      cart[cartIndex].qtd += +quantity
+      cart[cartIndex].qtd += quantity
     } else {
       cart.push({id: data.product.id, qtd: quantity})
     }
@@ -53,7 +53,7 @@ const Product= (data:Props) => {
 
     setCookie('cart', JSON.stringify(cart))
 
-    // router.push(`/${data.tenant.slug}/cart`)
+    router.push(`/${data.tenant.slug}/cart`)
 
   }
 
