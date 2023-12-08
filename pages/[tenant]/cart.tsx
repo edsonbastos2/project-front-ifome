@@ -10,17 +10,29 @@ import { User } from '../../types/User';
 import { useAuthContext } from '../../contexts/auth';
 import Head from 'next/head'
 import { Header } from '../../components/Header';
+import { InputField } from '../../components/InputField';
+import { Button } from '../../components/Button';
+import { useFormatter } from '../../libs/useFormatter';
 
 
 const Cart= (data:Props) => {
   const { setToken, setUser} = useAuthContext()
   const {tenant, setTenant} = useAppContext()
 
+  const formatter = useFormatter()
+
   useEffect(() => {
     setTenant(data.tenant)
     setToken(data.token)
     if(data.user) setUser(data.user)
   },[])
+
+  const [shippingInput, setShippingInput] = useState('')
+  const [price, setPrice] = useState(0)
+
+  const handleShipiing = () => {}
+
+
 
   return (
     <div className={styles.container}>
@@ -35,6 +47,41 @@ const Cart= (data:Props) => {
       />
     
       <div className={styles.productsQuantity}> x itens</div>
+
+      <div className={styles.productsList}></div>
+
+      <div className={styles.shippingArea}>
+        <div className={styles.shippingTitle}>Calcular frete e prazo</div>
+        <div className={styles.shippingForm}>
+          <InputField 
+            color={data.tenant.mainColor}
+            placeholder='Digite seu Cep'
+            value={shippingInput}
+            onChange={(newValue) => setShippingInput(newValue)}
+          />
+          <Button 
+            color={data.tenant.mainColor}
+            label='Ok'
+            onClick={handleShipiing}
+          />
+        </div>
+
+        <div className={styles.shippingInfo}>
+          <div className={styles.shippingAddress}>Rua Bem Ali</div>
+          <div className={styles.shippingTime}>
+            <div className={styles.shippingTimeText}>
+              Receba em 25 minutos
+            </div>
+            <div
+              className={styles.shippingPrice}
+              style={{color: data.tenant.mainColor}}
+              >{formatter.formatPrice(price)}</div>
+          </div>
+        </div>
+      </div>
+
+      <div className={styles.resume}></div>
+
     </div>
   );
 }

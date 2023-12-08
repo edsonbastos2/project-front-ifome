@@ -11,3 +11,45 @@
     font-size: 16px;
     color: #1b1b1b;
 }
+
+.shippingArea {
+    margin-top: 31px;
+}
+
+.shippingTitle {
+    font-size: 16px;
+    font-weight: 400;
+    color: #6a7d8b;
+    margin-bottom: 16px;
+}
+
+.shippingForm {
+    display: flex;
+    gap: 14px;
+}
+
+.shippingInfo {
+    background-color: #f9f9fa;
+    padding: 24px 32px;
+    border-radius: 8px;
+    margin-top: 16px;
+}
+
+.shippingAddress {
+    font-size: 10px;
+    color: #6A7D8B;
+    font-weight: 400;
+}
+
+.shippingTime {
+    display: flex;
+    justify-content: space-between;
+    font-size: 16px;
+    font-weight: 400;
+    margin-top: 15px;
+}
+
+.shippingPrice {
+    font-weight: 600;
+    color: #1b1b1b;
+}
