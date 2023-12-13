@@ -13,6 +13,7 @@ import { Header } from '../../components/Header';
 import { InputField } from '../../components/InputField';
 import { Button } from '../../components/Button';
 import { useFormatter } from '../../libs/useFormatter';
+import { CartItem } from '../../types/CartItem';
 
 
 const Cart= (data:Props) => {
@@ -29,8 +30,12 @@ const Cart= (data:Props) => {
 
   const [shippingInput, setShippingInput] = useState('')
   const [price, setPrice] = useState(0)
+  const [shippingPrice, setShippingPrice] = useState(0)
+  const [subtotal, setSubtotal] = useState(0)
 
   const handleShipiing = () => {}
+
+  const handleFinish = () => {}
 
 
 
@@ -80,7 +85,34 @@ const Cart= (data:Props) => {
         </div>
       </div>
 
-      <div className={styles.resume}></div>
+      <div className={styles.resume}>
+        <div className={styles.resumeArea}>
+          <div className={styles.resumeItem}>
+            <div className={styles.resumeLeft}>Subtotal</div>
+            <div className={styles.resumeRight}>{formatter.formatPrice(subtotal)}</div>
+          </div>
+          <div className={styles.resumeItem}>
+            <div className={styles.resumeLeft}>Frete</div>
+            <div className={styles.resumeRight}>{shippingPrice > 0 ? formatter.formatPrice(shippingPrice) : '--'}</div>
+          </div>
+          <div className={styles.resumeLine}></div>
+          <div className={styles.resumeItem}>
+            <div className={styles.resumeLeft}>Total</div>
+            <div
+              className={styles.resumeBig} style={{color: data.tenant.mainColor}}>
+                {formatter.formatPrice(shippingPrice + subtotal)}
+              </div>
+          </div>
+          <div className={styles.resumeBtn}>
+            <Button
+              color={data.tenant.mainColor}
+              label='Continuar'
+              onClick={handleFinish}
+              fill
+            />
+          </div>
+        </div>
+      </div>
 
     </div>
   );
@@ -90,9 +122,9 @@ export default Cart;
 
 type Props = {
   tenant: Tenant
-  products: Product[]
   token: string
-  user: User | null
+  user: User | null,
+  cart: CartItem[]
 }
 
 
@@ -104,11 +136,13 @@ export const getServerSideProps:GetServerSideProps = (async (context) => {
 
   const tenant = await api.getTenant()
 
-  const products = await api.getAllProducts()
-
   const token  = getCookie('_access_token', context)
 
   const user = await api.authorization(token as string)
+
+  const cartCookie = getCookie('cart', context)
+
+  const cart = await api.getCartProduct(cartCookie as string)
 
   if(!tenant) {
     return {
@@ -119,5 +153,5 @@ export const getServerSideProps:GetServerSideProps = (async (context) => {
     }
   }
 
-  return { props: { tenant, products, user, token } }
+  return { props: { tenant, user, token, cart } }
 })

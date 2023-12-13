@@ -1,3 +1,4 @@
+import { CartItem } from "../types/CartItem"
 import { Product } from "../types/Product"
 import { Tenant } from "../types/Tenant"
 import { User } from "../types/User"
@@ -49,6 +50,28 @@ export const useApi = (tenantslug: string) => ({
     getProduct: async(id: number) => {
 
         return {...TEMPORARYondeProduct, id}
+    },
+
+    getCartProduct: async(cartCookie: string) => {
+        let cart = [] as CartItem[]
+
+        if(!cartCookie) return cart
+        const cartJson = JSON.parse(cartCookie)
+
+        for(let i in cartJson) {
+            if(cartJson[i].id && cartJson[i].qtd) {
+                const product = {
+                    ...TEMPORARYondeProduct,
+                    id: cartJson[i].id
+                }
+                cart.push({
+                    qtd: cartJson[i].qtd,
+                    product
+                })
+            }
+        }
+
+        return cart
     },
 
     authorization: async (token:string):Promise<User|false> => {
