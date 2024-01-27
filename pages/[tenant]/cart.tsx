@@ -34,6 +34,12 @@ const Cart= (data:Props) => {
 
   // Product control
     const [cart, setCart] = useState<CartItem[]>(data.cart)
+    const handleCartChange = (newCount: number, id:number) => {
+      console.log({
+        newCount,
+        id
+      })
+    }
 
   // Shipping
     const [shippingInput, setShippingInput] = useState('')
@@ -61,13 +67,6 @@ const Cart= (data:Props) => {
     const handleFinish = () => {
       router.push(`/${data.tenant.slug}/checkout`)
     }
-
-    const handleCartChange = () => {}
-
-
-
-
-
 
 
   return (

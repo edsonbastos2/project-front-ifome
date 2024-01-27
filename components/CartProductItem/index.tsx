@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import { Product } from '../../types/Product'
 import styles from './styles.module.css'
 import { useFormatter } from '../../libs/useFormatter'
@@ -23,7 +22,12 @@ export const CartProductItem = ({ color, onChange, productItem, quantity}:Props)
             <div className={styles.productInfo}>
                 <span className={styles.productCategory}>{productItem.category}</span>
                 <span className={styles.productName}>{productItem.name}</span>
-                <span className={styles.productPrice}>{formatPrice(productItem.price)}</span>
+                <span 
+                    className={styles.productPrice}
+                    style={{color: color}}
+                >
+                    {formatPrice(productItem.price)}
+                </span>
             </div>
             <div className={styles.quantityControl}>
                 <Quantity
