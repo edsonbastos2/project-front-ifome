@@ -5,7 +5,7 @@ import { Tenant } from '../../types/Tenant';
 import { useAppContext } from '../../contexts/app';
 import { useEffect, useState } from 'react';
 import { Product } from '../../types/Product';
-import { getCookie } from "cookies-next";
+import { getCookie, setCookie } from "cookies-next";
 import { User } from '../../types/User';
 import { useAuthContext } from '../../contexts/auth';
 import Head from 'next/head'
@@ -16,6 +16,7 @@ import { useFormatter } from '../../libs/useFormatter';
 import { CartItem } from '../../types/CartItem';
 import { useRouter } from 'next/router';
 import { CartProductItem } from '../../components/CartProductItem';
+import { CartCookie } from '../../types/CartCookie';
 
 
 const Cart= (data:Props) => {
@@ -35,10 +36,31 @@ const Cart= (data:Props) => {
   // Product control
     const [cart, setCart] = useState<CartItem[]>(data.cart)
     const handleCartChange = (newCount: number, id:number) => {
-      console.log({
-        newCount,
-        id
-      })
+      const tempCart: CartItem[] = [...cart]
+      const cartIndex = tempCart.findIndex(item => item.product.id === id)
+      console.log('cartIndex: ', cartIndex)
+
+      if(newCount > 0) {
+        tempCart[cartIndex].qtd = newCount
+      } else {
+        delete tempCart[cartIndex]
+      }
+
+      let newCart: CartItem[] = tempCart.filter(item  => item)
+
+      setCart(newCart)
+
+      // update cookie
+
+      let cartCookie: CartCookie[] = []
+      for(let i in newCart) {
+        cartCookie.push({
+          id: newCart[i].product.id,
+          qtd: newCart[i].qtd
+        })
+      }
+
+      setCookie('cart', JSON.stringify(cartCookie))
     }
 
   // Shipping
@@ -47,6 +69,7 @@ const Cart= (data:Props) => {
     const [shippingTime, setShippingTime] = useState(0)
     const [shippingAddress, setShippingAddress] = useState('')
     const handleShipiing = () => {
+      setShippingAddress('Rua ABC, 123')
       setShippingPrice(14.50)
       setShippingTime(25)
       setShippingAddress(shippingInput)
