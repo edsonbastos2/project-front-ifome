@@ -38,3 +38,25 @@
     color: #1b1b1b;
     font-size: 16px;
 }
+
+.qtArea {
+    margin-right: 24px;
+}
+
+.qtTitle {
+    color: #1b1b1b;
+    font-weight: 600;
+    margin-bottom: 2px;
+}
+
+.qtContent {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    background-color: #F2F4F5;
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: 16px;
+}

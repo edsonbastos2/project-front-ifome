@@ -8,9 +8,10 @@ type Props = {
     quantity: number
     productItem: Product
     onChange: (qtdCount:number, id:number) => void
+    noEdit?: boolean
 }
 
-export const CartProductItem = ({ color, onChange, productItem, quantity}:Props) => {
+export const CartProductItem = ({ color, onChange, productItem,noEdit, quantity}:Props) => {
 
     const { formatPrice } = useFormatter()
 
@@ -30,13 +31,24 @@ export const CartProductItem = ({ color, onChange, productItem, quantity}:Props)
                 </span>
             </div>
             <div className={styles.quantityControl}>
-                <Quantity
-                    color={color}
-                    count={quantity}
-                    onUpdateCount={(newcount:number) => onChange(newcount, productItem.id)}
-                    min={0}
-                    small
-                />
+                {
+                    noEdit && 
+                    <div className={styles.qtArea}>
+                        <div className={styles.qtTitle} style={{color}}>Qnt.</div>
+                        <div className={styles.qtContent} style={{color}}>
+                            { quantity}
+                        </div>
+                    </div>
+                }
+                { !noEdit && 
+                    <Quantity
+                        color={color}
+                        count={quantity}
+                        onUpdateCount={(newcount:number) => onChange(newcount, productItem.id)}
+                        min={0}
+                        small
+                    />
+                }
             </div>
         </div>
     )

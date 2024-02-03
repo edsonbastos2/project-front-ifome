@@ -61,7 +61,7 @@ export const Sidebar = ({ tenant, onClose, openSidebar }:Props) => {
                     <SidebarMenuItem
                         color='#6A7D8B'
                         icon='cart'
-                        label='Cart'
+                        label='Sacola'
                         onClick={() => router.push(`/${tenant.slug}/cart`)}
                     />
                     <SidebarMenuItem

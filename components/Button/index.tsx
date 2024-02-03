@@ -5,19 +5,21 @@ type Props = {
     label: string
     onClick: () => void
     fill?: boolean
+    disabled?: boolean
 }
 
 
-export const Button = ({color, fill, label, onClick}:Props) => {
+export const Button = ({color, fill, label, disabled, onClick}:Props) => {
 
     return(
         <div
             className={styles.container}
-            onClick={onClick}
+            onClick={!disabled ? onClick : () => {}}
             style={{
                 color: fill ? '#ffffff' : color,
                 backgroundColor: fill ? color : 'transparent',
-                borderColor: color
+                borderColor: color,
+                opacity: disabled ? .4 : 1
             }}
 
         >
