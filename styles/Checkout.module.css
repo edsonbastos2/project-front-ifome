@@ -1,0 +1,121 @@
+.container {
+    background-color: #fff;
+    padding: 50px 24px;
+}
+
+
+.infoGroup {
+    border-top: 1.5px solid rgba(27, 27, 27, 0.1);
+    margin-bottom: 40px;
+}
+
+.infoTitle {
+    font-weight: 400;
+    font-size: 16px;
+    color: #1b1b1b;
+    margin-bottom: 8px;
+}
+
+.infoArea {
+    padding-top: 24px;
+}
+
+.productsQuantity {
+    border-top: 1.5px solid rgba(27, 27, 27, .1);
+    border-bottom: 1.5px solid rgba(27, 27, 27, .1);
+    padding: 19px 0;
+    font-weight: 400;
+    font-size: 16px;
+    color: #1b1b1b;
+}
+
+.shippingArea {
+    margin-top: 31px;
+}
+
+.shippingTitle {
+    font-size: 16px;
+    font-weight: 400;
+    color: #6a7d8b;
+    margin-bottom: 16px;
+}
+
+.shippingForm {
+    display: flex;
+    gap: 14px;
+}
+
+.shippingInfo {
+    background-color: #f9f9fa;
+    padding: 24px 32px;
+    border-radius: 8px;
+    margin-top: 16px;
+}
+
+.shippingAddress {
+    font-size: 10px;
+    color: #6A7D8B;
+    font-weight: 400;
+}
+
+.shippingTime {
+    display: flex;
+    justify-content: space-between;
+    font-size: 16px;
+    font-weight: 400;
+    margin-top: 15px;
+}
+
+.shippingPrice {
+    font-weight: 600;
+    color: #1b1b1b;
+}
+
+.resumeArea {
+    background-color: #f9f9fb;
+    border-radius: 8px;
+    margin-top: 16px;
+    padding: 48px 32px;
+}
+
+.resumeItem {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 24px;
+}
+
+.resumeLeft {
+    font-size: 16px;
+    color: #1b1b1b;
+    font-weight: 400;
+}
+
+.resumeRight {
+    font-weight: 500;
+    color: #1b1b1b;
+}
+
+.resumeBig {
+    font-size: 24px;
+    font-weight: 600;
+    color: #1b1b1b;
+}
+
+
+.resumeLine {
+    border-top: 1px dashed #96a3ab;
+    margin-bottom: 29px;
+}
+.resumeBtn {
+    margin-top: 40px;
+}
+
+.paymentTypes {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.paymentBtn {
+    flex: 1;
+}
