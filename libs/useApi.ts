@@ -1,3 +1,4 @@
+import { Address } from "../types/Address"
 import { CartItem } from "../types/CartItem"
 import { Product } from "../types/Product"
 import { Tenant } from "../types/Tenant"
@@ -81,5 +82,22 @@ export const useApi = (tenantslug: string) => ({
             name:'Edson Bastos',
             email:'edsonbastos@gmail.com'
         }
+    },
+
+    getUserAddresses: async(email:string) => {
+        const addresses:Address[] = []
+
+        for(let i=0; i<4;i++) {
+            addresses.push({
+                id: i + 1,
+                street: 'Rua ' + i+1,
+                number: `${i+1}00`,
+                cep:'999999999',
+                city:'Fortaleza',
+                state: 'CE',
+                neighborhood:'Barra do ceará',
+            })
+        }
+        return addresses
     }
 })

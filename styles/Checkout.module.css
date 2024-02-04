@@ -119,3 +119,8 @@
 .paymentBtn {
     flex: 1;
 }
+
+.cupomInput {
+    display: flex;
+    gap: 14px;
+}
