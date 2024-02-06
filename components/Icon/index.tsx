@@ -6,6 +6,7 @@ import Card from './card.svg'
 import Cupom from './cupom.svg'
 import Checked from './checked.svg'
 import Cash from './cash.svg'
+import Dots from './dots.svg'
 
 type Props = {
     icon: string
@@ -26,6 +27,7 @@ export const Icon = ({ color, height, icon, width}:Props) => {
             { icon === 'checked' && <Checked color={color}/>}
             { icon === 'cash' && <Cash color={color}/>}
             { icon === 'rigtharrow' && <RigthArrow color={color}/>}
+            { icon === 'dots' && <Dots color={color}/>}
         </div>
     )
 }

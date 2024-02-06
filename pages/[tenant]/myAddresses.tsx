@@ -14,6 +14,7 @@ import { CartItem } from '../../types/CartItem';
 import { useRouter } from 'next/router';
 import { Button } from '../../components/Button';
 import { Address } from '../../types/Address';
+import AddressesItem from '../../components/AddressesItem/Index';
 
 
 const MyAddresses= (data:Props) => {
@@ -35,7 +36,18 @@ const MyAddresses= (data:Props) => {
     router.push(`/${data.tenant.slug}/newAddress`)
   }
 
-  
+  const handleselected = (address:Address) => {
+    console.log('selecionou o endereço: ',{
+      addresse: address.street,
+      number: address.number,
+    })
+  }
+  const handleEdit = (id:number) => {
+
+  }
+  const handleDelete = (id:number) => {}
+
+  const [openModal, setOpenModal] = useState(0)
 
   return (
     <div className={styles.container}>
@@ -51,7 +63,16 @@ const MyAddresses= (data:Props) => {
 
       <div className={styles.list}>
         { data.addresses.map((item, index) => (
-          <div key={index}>{item.street} - {item.number}</div>
+          <AddressesItem 
+            key={index}
+            color={data.tenant.mainColor}
+            addresse={item}
+            onSelected={handleselected}
+            onEdit={handleEdit}
+            onDelete={handleDelete}
+            open={openModal}
+            setOpenModal={setOpenModal}
+          />
         ))}
       </div>
       <div className={styles.btnArea}>

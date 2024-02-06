@@ -90,7 +90,7 @@ export const useApi = (tenantslug: string) => ({
         for(let i=0; i<4;i++) {
             addresses.push({
                 id: i + 1,
-                street: 'Rua ' + i+1,
+                street: `Rua Ceci teste agora mesmo`,
                 number: `${i+1}00`,
                 cep:'999999999',
                 city:'Fortaleza',
