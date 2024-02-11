@@ -7,6 +7,8 @@ import Cupom from './cupom.svg'
 import Checked from './checked.svg'
 import Cash from './cash.svg'
 import Dots from './dots.svg'
+import Edit from './edit.svg'
+import Delete from './delete.svg'
 
 type Props = {
     icon: string
@@ -28,6 +30,8 @@ export const Icon = ({ color, height, icon, width}:Props) => {
             { icon === 'cash' && <Cash color={color}/>}
             { icon === 'rigtharrow' && <RigthArrow color={color}/>}
             { icon === 'dots' && <Dots color={color}/>}
+            { icon === 'edit' && <Edit color={color}/>}
+            { icon === 'delete' && <Delete color={color}/>}
         </div>
     )
 }

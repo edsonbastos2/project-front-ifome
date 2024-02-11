@@ -38,7 +38,31 @@ const AddressesItem = ({ addresse, color, onDelete, onEdit, onSelected, open, se
                 />
             </div>
             { open === addresse.id &&
-                <div className={styles.addresseModal}>...</div>
+                <div className={styles.addresseModal}>
+                    <div className={styles.addressItem} onClick={() => onEdit(addresse.id)}>
+                        <div className={styles.addressIcon}>
+                            <Icon 
+                                icon='edit'
+                                width={24}
+                                height={24}
+                                color='#96A3AB'
+                            />
+                        </div>
+                        <div className={styles.addressIconText}>Editar</div>
+                    </div>
+
+                    <div className={styles.addressItem} onClick={() => onDelete(addresse.id)}>
+                        <div className={styles.addressIcon}>
+                            <Icon 
+                                icon='delete'
+                                width={24}
+                                height={24}
+                                color='#96A3AB'
+                            />
+                        </div>
+                        <div className={styles.addressIconText}>Deletar</div>
+                    </div>
+                </div>
             }
         </div>
     </div>

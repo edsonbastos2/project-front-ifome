@@ -34,6 +34,21 @@
     box-shadow: 0px 16px 40px rgba(0,0,0,0.08);
     border-radius: 4px;
     padding: 19px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.addressItem {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+}
+
+.addressIconText {
+    font-size: 16px;
+    font-weight: 400;
+    color: #1b1b1b;
 }
 
 .addresseActiosIcon {

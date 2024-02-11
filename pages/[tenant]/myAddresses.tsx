@@ -19,7 +19,7 @@ import AddressesItem from '../../components/AddressesItem/Index';
 
 const MyAddresses= (data:Props) => {
   const { setToken, setUser} = useAuthContext()
-  const {tenant, setTenant} = useAppContext()
+  const {tenant, setTenant, setShippingAddress, setShippingPrice } = useAppContext()
 
   
   useEffect(() => {
@@ -30,24 +30,44 @@ const MyAddresses= (data:Props) => {
 
   const formatter = useFormatter()
   const router = useRouter()
+  const api = useApi(data.tenant.slug)
 
+  const handleselected = async (address:Address) => {
+    console.log('endereco: ', address)
+    const price = await api.getShippingPrice(address)
+    console.log('price: ', price)
+    if(price) {
+      setShippingAddress(address)
+      setShippingPrice(price)
+      router.push(`/${data.tenant.slug}/checkout`)
+    }
+  }
+  const handleEdit = (id:number) => {
+    console.log(`Editando o ${id}`)
+  }
+  
+  const handleDelete = (id:number) => {
+    console.log(`Deletando o ${id}`)
+  }
 
   const handleNewAddress = () => {
     router.push(`/${data.tenant.slug}/newAddress`)
   }
 
-  const handleselected = (address:Address) => {
-    console.log('selecionou o endereço: ',{
-      addresse: address.street,
-      number: address.number,
-    })
-  }
-  const handleEdit = (id:number) => {
-
-  }
-  const handleDelete = (id:number) => {}
-
   const [openModal, setOpenModal] = useState(0)
+
+  const handleClickEvent = (event: MouseEvent) => {
+    const tagName = (event.target as Element).tagName
+    if(!['svg','path'].includes(tagName)) {
+      setOpenModal(0)
+    }
+  }
+
+  useEffect(() => {
+    window.removeEventListener('click', handleClickEvent)
+    window.addEventListener('click', handleClickEvent)
+    return () => window.removeEventListener('click', handleClickEvent)
+  }, [openModal])
 
   return (
     <div className={styles.container}>

@@ -23,7 +23,7 @@ import { Address } from '../../types/Address';
 
 const Checkout= (data:Props) => {
   const { setToken, setUser} = useAuthContext()
-  const {tenant, setTenant} = useAppContext()
+  const {tenant, setTenant, shippingAddress, shippingPrice} = useAppContext()
 
   
   useEffect(() => {
@@ -39,21 +39,8 @@ const Checkout= (data:Props) => {
     const [cart, setCart] = useState<CartItem[]>(data.cart)
 
   // Shipping
-    const [shippingPrice, setShippingPrice] = useState(0)
-    const [shippingAddress, setShippingAddress] = useState<Address>()
-
-    const handlechangeAddress = () => {
+    const handleChangeAddress = () => {
       router.push(`/${data.tenant.slug}/myAddresses`)
-      // setShippingAddress({
-      //   id:1,
-      //   cep:'99999-999',
-      //   street: 'Rua das Flores',
-      //   number: '321',
-      //   city: 'São Paulo',
-      //   neighborhood: 'Jardins',
-      //   state: 'SP'
-      // })
-      // setShippingPrice(4.50)
     }
 
   // Payments
@@ -107,14 +94,10 @@ const Checkout= (data:Props) => {
           <div className={styles.infoBody}>
             <ButtonwithIcon
               color={data.tenant.mainColor}
-              value={
-                shippingAddress ?
-                `${shippingAddress.street}, ${shippingAddress.number} - ${shippingAddress.neighborhood}`
-                : 'Escolha um endereço'
-              }
               leftIcon='location'
               rightIcon='rigtharrow'
-              onClick={handlechangeAddress}
+              value={shippingAddress ? `${shippingAddress.street}, ${shippingAddress.number} - ${shippingAddress.neighborhood}` : 'Escolha um endereço'}
+              onClick={handleChangeAddress}
             />
           </div>
         </div>

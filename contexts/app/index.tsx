@@ -6,7 +6,9 @@ export { useAppContext } from './hook'
 
 
 const initialstate = {
-    tenant: null
+    tenant: null,
+    shippingAddress: null,
+    shippingPrice: 0,
 } as DataType
 
 export const AppContext = createContext<ContextType>({
