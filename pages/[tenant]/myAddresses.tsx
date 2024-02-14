@@ -44,6 +44,7 @@ const MyAddresses= (data:Props) => {
   }
   const handleEdit = (id:number) => {
     console.log(`Editando o ${id}`)
+    router.push(`/${data.tenant.slug}/address/${id}`)
   }
   
   const handleDelete = (id:number) => {
@@ -51,7 +52,7 @@ const MyAddresses= (data:Props) => {
   }
 
   const handleNewAddress = () => {
-    router.push(`/${data.tenant.slug}/newAddress`)
+    router.push(`/${data.tenant.slug}/address/new`)
   }
 
   const [openModal, setOpenModal] = useState(0)

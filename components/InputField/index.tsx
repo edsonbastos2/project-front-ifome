@@ -9,9 +9,10 @@ type Props = {
     value: string
     onChange: (payload: string) => void
     password?: boolean
+    warning?: boolean
 }
 
-export const InputField = ({color, onChange, password, placeholder, value}:Props) => {
+export const InputField = ({color, onChange, password, placeholder, value, warning}:Props) => {
 
     const [showPassword, setShowPassword] = useState(false)
     const [focused, setFocused] = useState(false)
@@ -20,7 +21,7 @@ export const InputField = ({color, onChange, password, placeholder, value}:Props
         <div
             className={styles.container}
             style={{
-                borderColor: focused ? color : '#f9f9fb',
+                borderColor: !warning ? (focused ? color : '#f9f9fb') : 'tomato',
                 backgroundColor: focused ? '#ffffff' : '#f9f9fb'
             }}
         >
