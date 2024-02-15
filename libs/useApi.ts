@@ -101,9 +101,27 @@ export const useApi = (tenantslug: string) => ({
         return addresses
     },
 
+    getUserAddress: async (id:number) => {
+        let address = {
+            id,
+            street: `Rua Ceci `,
+            number: `${id}00`,
+            cep:'999999999',
+            city:'Fortaleza',
+            state: 'CE',
+            neighborhood:'Barra do ceará'
+        } as Address
+
+        return address
+    },
+
     addUserAddress: async (address: Address) => {
 
         return {...address, id:3}
+    },
+
+    editUserAddress: async (address: Address) => {
+        return true
     },
 
     getShippingPrice: async (address: Address) => {
