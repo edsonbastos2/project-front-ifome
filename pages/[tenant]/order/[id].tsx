@@ -1,27 +1,27 @@
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
-import styles from '../../styles/Checkout.module.css'
-import { useApi } from '../../libs/useApi';
-import { Tenant } from '../../types/Tenant';
-import { useAppContext } from '../../contexts/app';
+import styles from '../../../styles/Order-id.module.css'
+import { useApi } from '../../../libs/useApi';
+import { Tenant } from '../../../types/Tenant';
+import { useAppContext } from '../../../contexts/app';
 import { useEffect, useState } from 'react';
-import { Product } from '../../types/Product';
+import { Product } from '../../../types/Product';
 import { getCookie, setCookie } from "cookies-next";
-import { User } from '../../types/User';
-import { useAuthContext } from '../../contexts/auth';
+import { User } from '../../../types/User';
+import { useAuthContext } from '../../../contexts/auth';
 import Head from 'next/head'
-import { Header } from '../../components/Header';
-import { InputField } from '../../components/InputField';
-import { Button } from '../../components/Button';
-import { useFormatter } from '../../libs/useFormatter';
-import { CartItem } from '../../types/CartItem';
+import { Header } from '../../../components/Header';
+import { InputField } from '../../../components/InputField';
+import { Button } from '../../../components/Button';
+import { useFormatter } from '../../../libs/useFormatter';
+import { CartItem } from '../../../types/CartItem';
 import { useRouter } from 'next/router';
-import { CartProductItem } from '../../components/CartProductItem';
-import { CartCookie } from '../../types/CartCookie';
-import { ButtonwithIcon } from '../../components/ButtonWithIcon';
-import { Address } from '../../types/Address';
+import { CartProductItem } from '../../../components/CartProductItem';
+import { CartCookie } from '../../../types/CartCookie';
+import { ButtonwithIcon } from '../../../components/ButtonWithIcon';
+import { Address } from '../../../types/Address';
 
 
-const Checkout= (data:Props) => {
+const OrderId= (data:Props) => {
   const { setToken, setUser} = useAuthContext()
   const {tenant, setTenant, shippingAddress, shippingPrice} = useAppContext()
 
@@ -96,13 +96,13 @@ const Checkout= (data:Props) => {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Checkout | {data.tenant.slug}</title>
+        <title>Pedidos #123 | {data.tenant.slug}</title>
       </Head>
 
       <Header
         href={`/${data.tenant.slug}`}
         color={data.tenant.mainColor}
-        title='Checkout'
+        title={`Pedido #xxx`}
       />
 
       <div className={styles.infoGroup}>
@@ -247,7 +247,7 @@ const Checkout= (data:Props) => {
   );
 }
 
-export default Checkout;
+export default OrderId;
 
 type Props = {
   tenant: Tenant

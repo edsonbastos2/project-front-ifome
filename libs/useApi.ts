@@ -1,10 +1,11 @@
 import { Address } from "../types/Address"
 import { CartItem } from "../types/CartItem"
+import { Order } from "../types/Order"
 import { Product } from "../types/Product"
 import { Tenant } from "../types/Tenant"
 import { User } from "../types/User"
 
-const TEMPORARYondeProduct = {
+const TEMPORARYoneProduct = {
     id:1,
     name:'Burgão',
     img: '/temp/burger.png',
@@ -12,6 +13,33 @@ const TEMPORARYondeProduct = {
     category: 'burguer',
     decription:'Burguer estilo texano, 2 blends de carne de 150g, queijo chedar, bacon com bastante molho BBQ'
 } as Product
+
+const TEMPORARYOrder = {
+    id: 321,
+    status: 'preparing',
+    orderDate:'2024-02-15',
+    userId: '12',
+    shippingAddress: {
+        id:3,
+        street: 'Rua ABC',
+        number:'389',
+        cep: '54833001',
+        city: 'Fortaleza',
+        neighborhood:'Barra do ceará',
+        state: 'CE'
+    },
+    shippingPrice: 9.14,
+    paymentType: 'card',
+    cupom: 'AQQ',
+    cupomDiscount: 14.3,
+    products: [
+        {product: {...TEMPORARYoneProduct, id:3}, qtd: 1},
+        {product: {...TEMPORARYoneProduct, id:2}, qtd: 2},
+        {product: {...TEMPORARYoneProduct, id:6}, qtd: 1},
+    ],
+    subtotal: 204,
+    total: 198.84
+} as Order
 
 export const useApi = (tenantslug: string) => ({
 
@@ -42,7 +70,7 @@ export const useApi = (tenantslug: string) => ({
         let products = []
         for(let p = 0; p<10;p++){
             products.push({
-                ...TEMPORARYondeProduct,
+                ...TEMPORARYoneProduct,
                 id: p + 1
             })
         }
@@ -50,7 +78,7 @@ export const useApi = (tenantslug: string) => ({
     },
     getProduct: async(id: number) => {
 
-        return {...TEMPORARYondeProduct, id}
+        return {...TEMPORARYoneProduct, id}
     },
 
     getCartProduct: async(cartCookie: string) => {
@@ -62,7 +90,7 @@ export const useApi = (tenantslug: string) => ({
         for(let i in cartJson) {
             if(cartJson[i].id && cartJson[i].qtd) {
                 const product = {
-                    ...TEMPORARYondeProduct,
+                    ...TEMPORARYoneProduct,
                     id: cartJson[i].id
                 }
                 cart.push({
@@ -116,7 +144,6 @@ export const useApi = (tenantslug: string) => ({
     },
 
     addUserAddress: async (address: Address) => {
-
         return {...address, id:3}
     },
 
@@ -124,8 +151,24 @@ export const useApi = (tenantslug: string) => ({
         return true
     },
 
-    getShippingPrice: async (address: Address) => {
+    deleteAddressUser: async (id:number) => {
+        return true
+    },
 
+    getShippingPrice: async (address: Address) => {
         return 9.50
+    },
+
+    setOrder: async (
+        address: Address,
+        paymentType: 'cash' | 'card',
+        paymentchange: number,
+        cupom: string,
+        cart: CartItem[]
+    ) => {
+
+        return TEMPORARYOrder
     }
+
+
 })

@@ -47,8 +47,10 @@ const MyAddresses= (data:Props) => {
     router.push(`/${data.tenant.slug}/address/${id}`)
   }
   
-  const handleDelete = (id:number) => {
-    console.log(`Deletando o ${id}`)
+  const handleDelete = async(id:number) => {
+    await api.deleteAddressUser(id)
+    router.reload()
+
   }
 
   const handleNewAddress = () => {
