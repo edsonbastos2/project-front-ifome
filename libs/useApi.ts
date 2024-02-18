@@ -17,7 +17,7 @@ const TEMPORARYoneProduct = {
 const TEMPORARYOrder = {
     id: 321,
     status: 'preparing',
-    orderDate:'2024-02-15',
+    orderDate:'2024-02-4',
     userId: '12',
     shippingAddress: {
         id:3,
@@ -167,6 +167,10 @@ export const useApi = (tenantslug: string) => ({
         cart: CartItem[]
     ) => {
 
+        return TEMPORARYOrder
+    },
+
+    getOrder: async (orderId: number) => {
         return TEMPORARYOrder
     }
 

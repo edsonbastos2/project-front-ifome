@@ -9,7 +9,7 @@ export type Order = {
     shippingAddress: Address
     shippingPrice: number
     paymentType: 'cash' | 'card'
-    paynebtchange?: number
+    paymentchange?: number
     cupom?: string
     cupomDiscount?: number
     products: CartItem[]

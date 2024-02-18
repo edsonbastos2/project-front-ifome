@@ -3,6 +3,58 @@
     padding: 50px 24px;
 }
 
+.statusArea {
+    margin-top: 21px;
+    border-radius: 4px;
+    padding: 27px 23px;
+}
+.statustitle {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    line-height: 19px;
+}
+.statusPct {
+    height: 8px;
+    background-color: rgba(0,0,0, 0.1);
+    border-radius: 8px;
+    margin-bottom: 8px;
+}
+.statusBar {
+    height: inherit;
+    border-radius: 8px;
+}
+.statusMsg {
+    font-size: 10px;
+    margin-top: 8px;
+    font-weight: 400;
+    color: rgb(0,0,0,.7);
+}
+
+.orderInfoArea {
+    display: flex;
+    align-items: center;
+    border-bottom: 1.5px solid rgb(27, 27, 27, 0.1);
+    padding: 15px 0;
+}
+.orderInfostatus {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 6px 17px;
+    border-radius: 4px;
+}
+.orderInfoQtd {
+    font-weight: 400;
+    font-size: 16px;
+    padding: 0 19px;
+    flex: 1;
+}
+.orderInfoDate {
+    text-align: right;
+    font-weight: 400;
+    font-size: 16px;
+    color: #b3b3b3;
+}
 
 .infoGroup {
     border-top: 1.5px solid rgba(27, 27, 27, 0.1);
